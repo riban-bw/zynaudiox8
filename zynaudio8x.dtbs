@@ -44,7 +44,7 @@
 		target = <&sound>;
 		__overlay__ {
 			compatible = "simple-audio-card";
-			simple-audio-card,name = "zynaudio_8x";
+			simple-audio-card,name = "zynaudio8x";
 			simple-audio-card,format = "i2s";
 			simple-audio-card,bitclock-master = <&snd_codec>;
 			simple-audio-card,frame-master = <&snd_codec>;
