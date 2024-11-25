@@ -1,10 +1,14 @@
-# spdif-duplex
-Linux driver providing SPDIF duplex CODEC
+# zynaudio8x
+Provides requirements to enable zynthian 8 channel I2S soundcard.
 
 A device tree overlay to enable 8 channels of audio input and audio output.
 A kernel device driver providing duplex SPDIF interface.
 
 This only works on Raspberry Pi 5.
+
+Dependencies:
+
+`apt-get install raspberrypi-kernel-headers`
 
 To build:
 
