@@ -14,6 +14,10 @@ To install:
 
 `make install`
 
+Configure /boot/firmware/config.txt:
+
+`dtoverlay=zyndaudio8x`
+
 The soundcard must create bit clock and word clock. Bit clock should be connected to Rasberry Pi pin 12 (GPIO 18). Word clock should be connected to Raspberry Pi pin 35 (GPIO 19).
 
 Connections
