@@ -1,0 +1,64 @@
+// Definitions for zynthian 8 channel I2S soundcard
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2712"; // Raspberry Pi 5
+
+        fragment@0 {
+		// Configuration that can set the GPIO pins to enable i2s1 with 4 I2S ports
+                target = <&gpio>; // This node will modify the gpio node of the device tree
+                __overlay__ { // We are overlaying this config to the exiting device tree
+                        rp1_i2s1_8x: rp1_i2s1_8x { // Identifier and alias
+                                function = "i2s1"; // Defines the function to enable for these gpio pins
+                                pins = "gpio18", "gpio19", "gpio20", "gpio21", "gpio22", "gpio23", "gpio24", "gpio25", "gpio26", "gpio27"; // Defines the pins to configure
+                                bias-disable; // Disable pull-up/down
+                                status = "okay"; // Enable this node
+                        };
+                };
+        };
+
+	fragment@1 {
+		// Configure the GPIO pins for clock consumer
+		target = <&i2s_clk_consumer>;
+		__overlay__ {
+			pinctrl-0 = <&rp1_i2s1_8x>; // Configure i2s1 to use gpio defined in our fragment@0
+			status = "okay";
+		};
+	};
+
+	fragment@2 {
+		// Define CODEC
+		target-path = "/";
+		__overlay__ {
+			duplex_codec: duplex-codec {
+				compatible = "linux,spdif-duplex";
+				#sound-dai-cells = <0>;
+				status = "okay";
+			};
+		};
+	};
+
+	fragment@3 {
+		// Configure and enable soundcard driver
+		target = <&sound>;
+		__overlay__ {
+			compatible = "simple-audio-card";
+			simple-audio-card,name = "zynaudio_8x";
+			simple-audio-card,format = "i2s";
+			simple-audio-card,bitclock-master = <&snd_codec>;
+			simple-audio-card,frame-master = <&snd_codec>;
+			status = "okay";
+			cpu {
+				sound-dai = <&i2s_clk_consumer>;
+				dai-tdm-slot-num = <2>;
+				dai-tdm-slot-width = <32>;
+			};
+			snd_codec: simple-audio-card,codec {
+				sound-dai = <&duplex_codec>;
+			};
+		};
+	};
+};
+
+
