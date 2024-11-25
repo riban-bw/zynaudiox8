@@ -6,15 +6,15 @@ A kernel device driver providing duplex SPDIF interface.
 
 This only works on Raspberry Pi 5.
 
-Dependencies:
+## Dependencies:
 
 `apt-get install raspberrypi-kernel-headers`
 
-To build:
+## Build:
 
 `make`
 
-To install:
+## Install:
 
 `make install`
 
@@ -24,7 +24,7 @@ Configure /boot/firmware/config.txt:
 
 The soundcard must create bit clock and word clock. Bit clock should be connected to Rasberry Pi pin 12 (GPIO 18). Word clock should be connected to Raspberry Pi pin 35 (GPIO 19).
 
-Connections
+## Connections
 |GPIO|Pin|Description|
 |-|-|-|
 |18|12|Bit Clock|
