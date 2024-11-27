@@ -32,7 +32,7 @@
 		target-path = "/";
 		__overlay__ {
 			duplex_codec: duplex-codec {
-				compatible = "linux,spdif-duplex";
+				compatible = "linux,spdif-did";
 				#sound-dai-cells = <0>;
 				status = "okay";
 			};
@@ -51,8 +51,6 @@
 			status = "okay";
 			cpu {
 				sound-dai = <&i2s_clk_consumer>;
-				dai-tdm-slot-num = <2>;
-				dai-tdm-slot-width = <32>;
 			};
 			snd_codec: simple-audio-card,codec {
 				sound-dai = <&duplex_codec>;

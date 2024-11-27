@@ -9,5 +9,6 @@ clean:
 
 install:
 	cp zynaudio8x.dtbo /boot/firmware/overlays/
-	cp spdif_duplex.ko /lib/modules/$(shell uname -r)/kernel/drivers/
+	xz -f spdif_duplex.ko
+	cp spdif_duplex.ko.xz /lib/modules/$(shell uname -r)/kernel/sound/soc/codecs/snd-soc-spdif_duplex.ko.xz
 	depmod -a
