@@ -8,7 +8,15 @@ This only works on Raspberry Pi 5.
 
 ## Dependencies:
 
-`apt-get install raspberrypi-kernel-headers`
+```
+apt-get install raspberrypi-kernel-headers
+```
+
+@stojos says this is also required:
+```
+wget https://raw.githubusercontent.com/RPi-Distro/rpi-source/master/rpi-source -O /usr/local/bin/rpi-source && sudo chmod +x /usr/local/bin/rpi-source && /usr/local/bin/rpi-source -q --tag-update
+rpi-source
+```
 
 ## Build:
 
@@ -31,12 +39,12 @@ The soundcard must create bit clock and word clock. Bit clock should be connecte
 |-|-|-|
 |18|12|Bit Clock|
 |19|35|Word Clock|
-|20|38|I2S In 1|
-|21|40|I2S Out 1|
-|22|15|I2S In 2|
-|23|16|I2S Out 2|
-|24|18|I2S In 3|
-|25|22|I2S Out 3|
-|26|37|I2S In 4|
-|27|13|I2S Out 4|
+|20|38|I2S 1 In|
+|21|40|I2S 1 Out|
+|22|15|I2S 2 In|
+|23|16|I2S 2 Out|
+|24|18|I2S 3 In|
+|25|22|I2S 3 Out|
+|26|37|I2S 4 In|
+|27|13|I2S 4 Out|
 
