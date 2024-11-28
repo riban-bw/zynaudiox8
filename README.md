@@ -20,7 +20,9 @@ This only works on Raspberry Pi 5.
 
 Configure /boot/firmware/config.txt:
 
-`dtoverlay=zynaudio8x`
+`dtoverlay=zynaudio8x,inputs=4,outputs=2`
+
+`inputs` and `outputs` are optional parameters that limit the quantity of input (capture) and output (playback) ports. Range 0..8 and must be even. Invalid values will default to 8.
 
 The soundcard must create bit clock and word clock. Bit clock should be connected to Rasberry Pi pin 12 (GPIO 18). Word clock should be connected to Raspberry Pi pin 35 (GPIO 19).
 

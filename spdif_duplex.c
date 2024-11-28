@@ -60,8 +60,14 @@ static struct snd_soc_dai_driver duplex_stub_dai = {
 static int spdif_duplex_probe(struct platform_device *pdev)
 {
 	struct device_node *np = pdev->dev.of_node;
-	of_property_read_u32(np, "capture-channels", &(duplex_stub_dai.capture.channels_max));
-	of_property_read_u32(np, "playback-channels", &(duplex_stub_dai.playback.channels_max));
+	uint32_t val = 2;
+	of_property_read_u32(np, "capture-channels", &val);
+	if (val < 385 && (val % 2) == 0)
+		duplex_stub_dai.capture.channels_max = val;
+	val = 2;
+	of_property_read_u32(np, "playback-channels", &val);
+	if (val < 385 && (val % 2) == 0)
+		duplex_stub_dai.playback.channels_max = val;
 
 	return devm_snd_soc_register_component(&pdev->dev,
 			&soc_codec_spdif_duplex,

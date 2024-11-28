@@ -20,8 +20,8 @@
 			duplex_codec: duplex-codec {
 				compatible = "linux,spdif-did";
 				#sound-dai-cells = <0>;
-				capture-channels = <4>;
-				playback-channels = <4>;
+				capture-channels = <8>;
+				playback-channels = <8>;
 				status = "okay";
 			};
 		};
@@ -45,4 +45,10 @@
 			};
 		};
 	};
+
+	__overrides__ {
+		inputs = <&duplex_codec>,"capture-channels:0";
+		outputs = <&duplex_codec>,"playback-channels:0";
+	};
+
 };
