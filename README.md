@@ -9,13 +9,7 @@ This only works on Raspberry Pi 5.
 ## Dependencies:
 
 ```
-apt-get install raspberrypi-kernel-headers
-```
-
-@stojos says this is also required:
-```
-wget https://raw.githubusercontent.com/RPi-Distro/rpi-source/master/rpi-source -O /usr/local/bin/rpi-source && sudo chmod +x /usr/local/bin/rpi-source && /usr/local/bin/rpi-source -q --tag-update
-rpi-source
+apt-get install build-essential linux-headers-$(uname -r)
 ```
 
 ## Build:
