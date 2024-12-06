@@ -16,6 +16,10 @@ apt-get install build-essential linux-headers-$(uname -r)
 
 `make`
 
+or optionally pass a kernel name to build against a specific kernel:
+
+`make kernel=6.6.62+rpt-rpi-2712`
+
 ## Install:
 
 `make install`
